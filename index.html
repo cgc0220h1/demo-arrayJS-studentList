@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách sinh viên</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<p><b>Danh sách sinh viên</b></p>
+<input type="text" id="name-input">
+<button onclick="addStudent()">Thêm sinh viên</button>
+<table border="1px solid" cellpadding="5" cellspacing="1" id = "all-table">
+    <thead>
+    <tr>
+        <td width="20px">STT</td>
+        <td width="150px">Tên</td>
+        <td width="50px" colspan="2">Action</td>
+    </tr>
+    </thead>
+    <tbody id="table-body">
+    </tbody>
+</table>
+</body>
+<script>
+    let studentList = [];
+    let data ="";
+    let index = 0;
+    function addStudent() {
+        data = "";
+        studentList[index] = document.getElementById('name-input').value;
+        index++;
+        DisplayList();
+    }
+
+    function modifyStu(id) {
+        let name = prompt("Nhập tên bạn muốn sửa: ");
+        studentList[id] = name;
+        document.getElementById(id).innerText = name;
+    }
+
+    function deleteStu(id) {
+        studentList.splice(id, 1);
+        DisplayList();
+    }
+
+    function DisplayList(){
+        let data ="";
+        for (let i = 0; i < studentList.length; i++) {
+            data += "<tr>";
+            data += "<td>" + i + "</td>";
+            data += "<td id ="+ i +">" + studentList[i] + "</td>";
+            data += "<td>" + "<button onclick ='modifyStu(this.id)' id ="+ i +">Sửa</button>" + "</td>";
+            data += "<td>" + "<button onclick='deleteStu(this.id)' id ="+ i +">Xóa</button>";
+            data += "</tr>";
+        }
+        document.getElementById('table-body').innerHTML = data;
+    }
+
+</script>
+</html>
