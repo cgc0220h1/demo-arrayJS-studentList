@@ -2,9 +2,9 @@ let studentList = [];
 let index = 0;
 
 function addStudent() {
-    studentList[index] = document.getElementById('name-input').value;
+    studentList[index] = document.getElementById('nameInput').value;
     index++;
-    DisplayList();
+    displayList();
 }
 
 function modifyStu(id) {
@@ -16,10 +16,10 @@ function modifyStu(id) {
 function deleteStu(id) {
     studentList.splice(id, 1);
     index--;
-    DisplayList();
+    displayList();
 }
 
-function DisplayList() {
+function displayList() {
     let data = "";
     for (let i = 0; i < studentList.length; i++) {
         data += "<tr>";
@@ -29,5 +29,5 @@ function DisplayList() {
         data += "<td>" + "<button onclick='deleteStu(this.id)' id =" + i + ">Xóa</button>";
         data += "</tr>";
     }
-    document.getElementById('table-body').innerHTML = data;
+    document.getElementById('tableBody').innerHTML = data;
 }
